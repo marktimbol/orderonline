@@ -35,18 +35,16 @@
 
 		<div class="form-group">
 			<label class="checkbox-inline">
-				{!! Form::checkbox('hasDelivery', $restaurant->hasDelivery, null, ['ng-model' => 'hasDelivery']) !!} Does your restaurant have delivery?
+				{!! Form::checkbox('hasDelivery', $restaurant->hasDelivery, $restaurant->hasDelivery, []) !!}
+				Does your restaurant have delivery?
 			</label>
 
 		</div>	
 
-
-		<div ng-show="hasDelivery">
-			<div class="form-group">
-				{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
-				{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
-			</div>		
-		</div>
+		<div class="form-group">
+			{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
+			{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
+		</div>		
 
 		<div class="form-group">
 			{!! Form::label('minimumDeliveryTime', 'Minimum Delivery Time', ['class' => 'control-label']) !!}
@@ -84,7 +82,16 @@
 
 		<div class="form-group">
 			{!! Form::label('cuisine', 'Primary Cuisine', ['class' => 'control-label']) !!}
-			{!! Form::select('cuisine', $cuisines, null, ['class' => 'form-control']) !!}
+			
+			@foreach( $restaurant->cuisines as $cuisine )
+				<?php 
+					$cuisine_id = $cuisine->id;
+					break;
+				?>
+			@endforeach
+			
+			{!! Form::select('cuisine', $cuisines, $cuisine_id, ['class' => 'form-control']) !!}
+			
 		</div>	
 
 		<div class="form-group">

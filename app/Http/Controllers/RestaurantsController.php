@@ -8,9 +8,11 @@ use Laracasts\Flash\Flash;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateRestaurantRequest;
+use App\Http\Requests\UpdateRestaurantRequest;
 
 //Commands
 use App\Commands\CreateRestaurantCommand;
+use App\Commands\UpdateRestaurantCommand;
 
 //Repo
 use App\Repo\Restaurants\RestaurantRepositoryInterface;
@@ -102,7 +104,9 @@ class RestaurantsController extends Controller {
 	public function edit( $restaurantId )
 	{
 		$restaurant = $this->restaurant->find( $restaurantId );
-			
+		
+		//dd( $restaurant->toArray() );
+
 		if( $this->user->owns($restaurant) ) {
 
 			return view('dashboard.restaurants.edit', compact('restaurant'));
@@ -124,7 +128,7 @@ class RestaurantsController extends Controller {
 
 		Flash::success('Restaurant information was updated.');
 
-		return redirect()->route('dashboard.restaurant.edit',$request->id);
+		return redirect()->route('dashboard.restaurants.edit',$request->id);
 	}
 
 	/**

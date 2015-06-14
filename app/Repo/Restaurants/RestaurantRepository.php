@@ -9,11 +9,19 @@ class RestaurantRepository implements RestaurantRepositoryInterface {
 		return Restaurant::all();
 	}
 	
-	public function find( $id ) {
-		return Restaurant::findOrFail( $id );
+	public function find($id) {
+		return Restaurant::with('cuisines')->findOrFail( $id );
 	}
 	
-	public function store( $data ) {
+	public function store($data) {
 		return Restaurant::create( $data );
+	}
+
+	public function update($id, $data) {
+		$restaurant = $this->find($id);
+		$restaurant->fill($data);
+		$restaurant->save();
+
+		return $restaurant;
 	}
 }

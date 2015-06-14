@@ -12,8 +12,6 @@ $(document).ready( function() {
 var app = angular.module('orderOnline', []);
 app.controller('restaurantController', function($scope, $http) {
 
-	$scope.hasDelivery = false;
-
-	
+	//$scope.hasDelivery = false;
 
 });

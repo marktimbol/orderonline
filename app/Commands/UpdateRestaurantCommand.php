@@ -4,6 +4,7 @@ use App\Commands\Command;
 
 class UpdateRestaurantCommand extends Command {
 
+	public $id;
 	public $name;
 	public $description;
 	public $telephone;
@@ -24,8 +25,9 @@ class UpdateRestaurantCommand extends Command {
 	 *
 	 * @return void
 	 */
-	public function __construct( $name, $description, $telephone, $workingHours, $minimumOrderAmount, $hasDelivery, $deliveryCharge, $minimumDeliveryTime, $paymentMethod, $countryCode, $city, $zip, $cuisine)
+	public function __construct( $id, $name, $description, $telephone, $workingHours, $minimumOrderAmount, $hasDelivery, $deliveryCharge, $minimumDeliveryTime, $paymentMethod, $countryCode, $city, $zip, $address, $cuisine)
 	{
+		$this->id = $id;
 		$this->name = $name;
 		$this->description = $description;
 		$this->telephone = $telephone;
@@ -33,7 +35,7 @@ class UpdateRestaurantCommand extends Command {
 		$this->minimumOrderAmount = $minimumOrderAmount;
 		$this->hasDelivery = $hasDelivery;
 		$this->deliveryCharge = $deliveryCharge;
-		$htis->minimumDeliveryTime = $minimumDeliveryTime;
+		$this->minimumDeliveryTime = $minimumDeliveryTime;
 		$this->paymentMethod = $paymentMethod;
 		$this->countryCode = $countryCode;
 		$this->city = $city;
