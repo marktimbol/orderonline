@@ -1,0 +1,120 @@
+$primary_color: #FF5722;
+$dark_primary_color: #E64A19;
+
+$text_color: #212121;
+$secondary_text_color: #727272;
+
+$error_color: #a94442;
+
+body {
+	font-family: 'Roboto';
+	padding-top: 50px;
+}
+
+small {
+	&.error {
+		display: block;
+		color: $error_color;
+	}
+}
+
+@mixin transition() {
+	transition: all 0.2s;
+}
+
+.btn {
+	&.btn-primary {
+		background: $primary_color;
+		border-color: $dark_primary_color;	
+		
+		@include transition();	
+
+		&:hover {
+			background: $dark_primary_color;
+			border-color: $dark_primary_color;
+		}		
+	}
+
+}
+
+.intl-tel-input {
+	display: block;
+}
+
+.form-title {
+	border-bottom: 1px solid #ddd;
+	padding: 15px 0px;
+	margin: 30px 0px;
+}
+
+.navbar {
+	margin-bottom: 0px;
+}
+
+table {
+	&.restaurants {
+		td {
+			border-top: none !important;
+			padding: 20px !important;
+
+			a {
+				margin-top: 35px;
+			}
+		}		
+	}
+
+}
+
+#page-content-wrapper {
+	h1 {
+		&:first-of-type {
+			margin-top: 0px;
+		}
+	}
+}
+
+
+html[lang="ar"] {
+
+	body {
+		direction: rtl;
+		text-align: right;
+	}
+
+	.radio-inline, .checkbox-inline {
+		padding-right: 20px;
+		padding-left: 0;
+
+		input[type=radio],
+		input[type=radio],
+		input[type=checkbox],
+		input[type=checkbox] {
+			margin-right: -20px !important;
+		}	
+	}
+
+	.intl-tel-input {
+		.selected-flag {
+			padding: 0 8px 0 0px !important;
+			.arrow {
+				right: 35px;
+			}
+		}
+
+		input, input[type=text], input[type=tel] {
+			padding-right: 48px;
+			direction: ltr;
+			text-align: right;			
+		}		
+
+		.country-list {
+			.country {
+				.dial-code {
+					margin-right: 10px;
+				}
+			}
+		}
+	
+	}
+
+}

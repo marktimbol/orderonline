@@ -1,0 +1,66 @@
+body {
+  font-family: 'Roboto';
+  padding-top: 50px; }
+
+small.error {
+  display: block;
+  color: #a94442; }
+
+.btn.btn-primary {
+  background: #FF5722;
+  border-color: #E64A19;
+  transition: all 0.2s; }
+  .btn.btn-primary:hover {
+    background: #E64A19;
+    border-color: #E64A19; }
+
+.intl-tel-input {
+  display: block; }
+
+.form-title {
+  border-bottom: 1px solid #ddd;
+  padding: 15px 0px;
+  margin: 30px 0px; }
+
+.navbar {
+  margin-bottom: 0px; }
+
+table.restaurants td {
+  border-top: none !important;
+  padding: 20px !important; }
+  table.restaurants td a {
+    margin-top: 35px; }
+
+#page-content-wrapper h1:first-of-type {
+  margin-top: 0px; }
+
+html[lang="ar"] body {
+  direction: rtl;
+  text-align: right; }
+
+html[lang="ar"] .radio-inline, html[lang="ar"] .checkbox-inline {
+  padding-right: 20px;
+  padding-left: 0; }
+  html[lang="ar"] .radio-inline input[type=radio],
+  html[lang="ar"] .radio-inline input[type=radio],
+  html[lang="ar"] .radio-inline input[type=checkbox],
+  html[lang="ar"] .radio-inline input[type=checkbox], html[lang="ar"] .checkbox-inline input[type=radio],
+  html[lang="ar"] .checkbox-inline input[type=radio],
+  html[lang="ar"] .checkbox-inline input[type=checkbox],
+  html[lang="ar"] .checkbox-inline input[type=checkbox] {
+    margin-right: -20px !important; }
+
+html[lang="ar"] .intl-tel-input .selected-flag {
+  padding: 0 8px 0 0px !important; }
+  html[lang="ar"] .intl-tel-input .selected-flag .arrow {
+    right: 35px; }
+
+html[lang="ar"] .intl-tel-input input, html[lang="ar"] .intl-tel-input input[type=text], html[lang="ar"] .intl-tel-input input[type=tel] {
+  padding-right: 48px;
+  direction: ltr;
+  text-align: right; }
+
+html[lang="ar"] .intl-tel-input .country-list .country .dial-code {
+  margin-right: 10px; }
+
+/*# sourceMappingURL=app.css.map */
