@@ -1,5 +1,12 @@
 <?php
 
+
+/**
+ * Todo: Update Timings table
+ */
+
+
+
 use App\Restaurant;
 use App\Timings;
 
