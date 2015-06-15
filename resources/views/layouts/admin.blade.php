@@ -46,6 +46,7 @@
 
     </div>
 
+    {!! Html::script('/js/ckeditor/ckeditor/ckeditor.js') !!}   
     <script type="text/javascript" src="{{ elixir('js/all.js') }}"></script>
 
     <!-- Menu Toggle Script -->

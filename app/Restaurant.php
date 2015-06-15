@@ -5,8 +5,22 @@ use Illuminate\Database\Eloquent\Model;
 class Restaurant extends Model {
 
 	protected $fillable = [
-		'user_id', 'name', 'contactName', 'email', 'telephone', 'countryCode', 'address', 'hasDelivery',
-		'description', 'city', 'zip', 'workingHours', 'minimumDeliveryTime', 'minimumAmount', 'deliveryCharge', 'paymentMethod'
+		'user_id',
+		'name',
+		'contactName',
+		'email',
+		'telephone',
+		'countryCode',
+		'address',
+		'hasDelivery',
+		'description',
+		'city',
+		'zip',
+		'workingHours',
+		'minimumDeliveryTime',
+		'minimumOrderAmount',
+		'deliveryCharge',
+		'paymentMethod'
 	];
 	
 	public function cuisines() {
@@ -15,5 +29,9 @@ class Restaurant extends Model {
 
 	public function user() {
 		return $this->belongsTo('App\User');
+	}
+
+	public function timings() {
+		return $this->hasOne('App\Timing');
 	}
 }

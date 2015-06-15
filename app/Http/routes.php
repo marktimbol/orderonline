@@ -1,5 +1,23 @@
 <?php
 
+use App\Restaurant;
+use App\Timings;
+
+Route::get('schedule', function() {
+
+	$restaurant = Restaurant::findOrFail(21);
+	$timings = $restaurant->timings->toArray();
+
+	foreach( $timings as $key => $value ) {
+		if( $key == 'schedule' ) {
+			foreach( json_decode($value) as $schedule ) {
+				echo $schedule->day . '<br />' . $schedule->open . '<br />' . $schedule->close . '<hr />';
+			}
+		}
+	}
+
+});
+
 Route::group( ['prefix' => 'api/v1'], function() {
 	
 });

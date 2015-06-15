@@ -124,6 +124,7 @@ class RestaurantsController extends Controller {
 	 */
 	public function update( UpdateRestaurantRequest $request )
 	{
+
 		$this->dispatchFrom( UpdateRestaurantCommand::class, $request );
 
 		Flash::success('Restaurant information was updated.');

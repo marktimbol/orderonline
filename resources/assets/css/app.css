@@ -18,6 +18,7 @@ small.error {
   display: block; }
 
 .form-title {
+  color: #FF5722;
   border-bottom: 1px solid #ddd;
   padding: 15px 0px;
   margin: 30px 0px; }

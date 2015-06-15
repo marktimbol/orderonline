@@ -44,7 +44,12 @@ class CustomServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repo\Countries\CountryRepositoryInterface',
 			'App\Repo\Countries\CountryRepository'
-		);				
+		);		
+
+		$this->app->bind(
+			'App\Repo\Timings\TimingRepositoryInterface',
+			'App\Repo\Timings\TimingRepository'
+		);						
 	}
 
 }

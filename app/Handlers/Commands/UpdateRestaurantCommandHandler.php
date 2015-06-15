@@ -5,20 +5,23 @@ use App\Commands\UpdateRestaurantCommand;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\Repo\Restaurants\RestaurantRepositoryInterface;
+use App\Repo\Timings\TimingRepositoryInterface;
 
 class UpdateRestaurantCommandHandler {
 
 
 	protected $restaurant;
+	protected $timing;
 
 	/**
 	 * Create the command handler.
 	 *
 	 * @return void
 	 */
-	public function __construct( RestaurantRepositoryInterface $restaurant )
+	public function __construct( RestaurantRepositoryInterface $restaurant, TimingRepositoryInterface $timing )
 	{
 		$this->restaurant = $restaurant;
+		$this->timing = $timing;
 	}
 
 	/**
@@ -29,6 +32,7 @@ class UpdateRestaurantCommandHandler {
 	 */
 	public function handle(UpdateRestaurantCommand $command)
 	{
+
 		$data = [
 			'name'					=> $command->name,
 			'description'			=> $command->description,	
@@ -46,7 +50,12 @@ class UpdateRestaurantCommandHandler {
 			'cuisine'				=> $command->cuisine
 		];
 
+
 		$restaurant = $this->restaurant->update($command->id, $data);
+
+		$timings = $command->timings;
+
+		$this->timing->update($command->id, $timings);
 
 		$restaurant->cuisines()->attach($command->cuisine);
 	}
