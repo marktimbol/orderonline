@@ -50,13 +50,24 @@ class UpdateRestaurantCommandHandler {
 			'cuisine'				=> $command->cuisine
 		];
 
-
+		/**
+		 * Update restaurant information
+		 * @var [type]
+		 */
 		$restaurant = $this->restaurant->update($command->id, $data);
 
-		$timings = $command->timings;
+		/**
+		 * Update restaurant timings
+		 */
+		// for($i = 0; $i <= 6; $i++) {
+		// 	$command->timings[$i]['dayoff'] = $command->timings[$i]['dayoff'] ? 1 : 0;
+		// }
 
-		$this->timing->update($command->id, $timings);
+		$this->timing->update($command->id, $command->timings);
 
+		/**
+		 * Update restaurant cuisines
+		 */
 		$restaurant->cuisines()->attach($command->cuisine);
 	}
 

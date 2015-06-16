@@ -35,6 +35,10 @@ table.restaurants td {
 #page-content-wrapper h1:first-of-type {
   margin-top: 0px; }
 
+#page-content-wrapper .dayoff-option {
+  margin-bottom: 0;
+  margin-top: 5px; }
+
 html[lang="ar"] body {
   direction: rtl;
   text-align: right; }

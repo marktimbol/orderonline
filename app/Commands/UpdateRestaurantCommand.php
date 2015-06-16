@@ -20,7 +20,7 @@ class UpdateRestaurantCommand extends Command {
 	public $address;
 	public $cuisine;
 
-	public $timings;
+	public $timings = array();
 
 	/**
 	 * Create a new command instance.

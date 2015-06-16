@@ -82,7 +82,7 @@ class RestaurantsController extends Controller {
 
 		Flash::success('Thank you for registering your restaurant with us.');
 
-		return redirect()->route('dashboard.restaurants.edit', session('restaurant_id'));
+		return redirect()->route('dashboard.restaurants.index');
 	}
 	/**
 	 * Display the specified resource.

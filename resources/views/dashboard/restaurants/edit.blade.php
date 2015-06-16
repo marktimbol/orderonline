@@ -8,6 +8,7 @@
 		
 		<h3 class="form-title">Restaurant Information</h3>
 
+	
 		<div class="form-group">
 			{!! Form::label('name','Restaurant Name', ['class' => 'control-label']) !!}
 			{!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -32,7 +33,7 @@
 
 				<div class="form-group">
 					<label class="checkbox-inline">
-						{!! Form::checkbox('hasDelivery', 1, $restaurant->hasDelivery, ['data-ng-model' => 'itHasDelivery']) !!}
+						{!! Form::checkbox('hasDelivery', 1, null, ['ng-checked' => $restaurant->hasDelivery, 'ng-model' => 'itHasDelivery']) !!}
 						Does your restaurant have delivery?
 					</label>
 				</div>					
@@ -61,25 +62,28 @@
 		<h3 class="form-title">Restaurant Timings</h3>
 
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-8">
 				<div class="form-group">
 
 					{!! Form::label('workingDays', 'Working Days', ['class' => 'control-label']) !!}
 
-					<div class="row" ng-repeat="day in days">
+					<div class="row" ng-repeat="timing in restaurantTimings">
 
-						<div class="col-md-5">
+						<div class="col-md-3">
 							<div class="form-group">
-								<input type="text" name="timings[@{{$index}}][day]" value="@{{day}}" class="form-control" />
+								{!! Form::text('timings[@{{$index}}][day]', "@{{timing.day}}", ['class' => 'form-control']) !!}
 							</div>	
 						</div>
 
-						<div class="col-md-7">
+						<div class="col-md-6">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
-											 {!! Form::text('timings[@{{$index}}][open]', null, ['class' => 'form-control timepicker', 'placeholder' => 'To']) !!}
+											<select name="timings[@{{$index}}][open]" class="form-control">
+												<option ng-repeat="time in timings" value="@{{time}}">@{{time}}</option>
+											</select>
+											
 											<div class="input-group-addon">
 												<i class="glyphicon glyphicon-time"></i>
 											</div>
@@ -90,7 +94,10 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
-											 {!! Form::text('timings[@{{$index}}][close]', null, ['class' => 'form-control timepicker', 'placeholder' => 'To']) !!}
+											<select name="timings[@{{$index}}][close]" class="form-control">
+												<option ng-repeat="time in timings" value="@{{time}}">@{{time}}</option>
+											</select>											
+											
 											<div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
 										</div>
 									</div>	
@@ -98,12 +105,27 @@
 							</div>
 
 						</div>
-					</div>	
-															
+
+						<div class="col-md-3">
+							
+							<div class="form-group dayoff-option">
+								<label class="checkbox-inline">
+									
+									{!! Form::hidden('timings[@{{$index}}][dayoff]', 0) !!} <!--override dayoff value if unchecked-->
+
+									{!! Form::checkbox('timings[@{{$index}}][dayoff]', 1, null, ['ng-checked' => '@{{timing.dayoff}}']) !!}
+
+									Mark as Day off
+									
+								</label>
+							</div>	
+						</div>
+
+					</div>										
 				</div>
 			</div>
 
-			<div class="col-md-6">
+			<div class="col-md-4">
 
 			</div>
 		</div>
@@ -159,7 +181,8 @@
 			{!! Form::submit('Update Restaurant Information', ['class' => 'btn btn-primary']) !!}
 		</div>
 
-		{!! Form::hidden('id', $restaurant->id) !!}
+		<input type="hidden" name="id" ng-model="restaurantId" value="{{$restaurant->id}}" />
+	{{-- 	{!! Form::hidden('id', $restaurant->id) !!} --}}
 
 	{!! Form::close() !!}
 	
