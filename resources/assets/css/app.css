@@ -29,8 +29,6 @@ small.error {
 table.restaurants td {
   border-top: none !important;
   padding: 20px !important; }
-  table.restaurants td a {
-    margin-top: 35px; }
 
 #page-content-wrapper h1:first-of-type {
   margin-top: 0px; }

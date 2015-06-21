@@ -127,6 +127,10 @@ class RestaurantsController extends Controller {
 
 		$this->dispatchFrom( UpdateRestaurantCommand::class, $request );
 
+		if( $request->hasFile('logo') ) {
+			
+		}
+
 		Flash::success('Restaurant information was updated.');
 
 		return redirect()->route('dashboard.restaurants.edit',$request->id);

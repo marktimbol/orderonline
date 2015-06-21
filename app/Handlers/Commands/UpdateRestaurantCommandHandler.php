@@ -32,6 +32,7 @@ class UpdateRestaurantCommandHandler {
 	 */
 	public function handle(UpdateRestaurantCommand $command)
 	{
+		dd($command->logo);
 
 		$data = [
 			'name'					=> $command->name,
@@ -49,6 +50,20 @@ class UpdateRestaurantCommandHandler {
 			'address'				=> $command->address,
 			'cuisine'				=> $command->cuisine
 		];
+
+		// if( $command->logo ) {
+			
+		// 	$logo = request()->file('passport');
+		// 	$filename = $logo->getClientOriginalName();
+		// 	$extension = $logo->getClientOriginalExtension();								
+		// 	$data['logo'] = time().'.'.$extension;
+
+		// 	try {
+		// 		request()->file('logo')->move(public_path() . '/images/uploads/', time().'.'.$extension);
+		// 	} catch (Exception $e) {
+				
+		// 	}	
+		// }
 
 		/**
 		 * Update restaurant information

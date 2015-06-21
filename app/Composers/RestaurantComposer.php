@@ -42,7 +42,11 @@ class RestaurantComposer {
 			$countries[$country->countryCode] = $country->name;
 		}	
 
+		$timeRange = hoursRange( 0, 86400, 60 * 15 );
+
         $view->with('countries', $countries );
+
+        $view->with('timeRange', $timeRange);
 
         $view->with('currentUser', Auth::user() ?: 'guest');        
     }

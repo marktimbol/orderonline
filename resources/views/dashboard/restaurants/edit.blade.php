@@ -4,11 +4,10 @@
 
 	<h1>Update {{ $restaurant->name }}</h1>
 
-	{!! Form::model( $restaurant, ['method' => 'PUT', 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController']) !!}
+	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController']) !!}
 		
 		<h3 class="form-title">Restaurant Information</h3>
 
-	
 		<div class="form-group">
 			{!! Form::label('name','Restaurant Name', ['class' => 'control-label']) !!}
 			{!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -26,10 +25,24 @@
 					{!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!}
 				</div>		
 
-				<div class="form-group">
-					{!! Form::label('minimumOrderAmount', 'Minimum Order Amount', ['class' => 'control-label']) !!}
-					{!! Form::text('minimumOrderAmount', null, ['class' => 'form-control']) !!}
-				</div>	
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							{!! Form::label('minimumOrderAmount', 'Minimum Order Amount', ['class' => 'control-label']) !!}
+							{!! Form::text('minimumOrderAmount', null, ['class' => 'form-control']) !!}
+						</div>	
+					</div>
+
+					<div class="col-md-6">
+						<div ng-show="itHasDelivery">
+							<div class="form-group">
+								{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
+								{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
+							</div>		
+						</div>
+					</div>
+				</div>
+
 
 				<div class="form-group">
 					<label class="checkbox-inline">
@@ -40,13 +53,6 @@
 			</div>
 
 			<div class="col-md-6">
-				<div ng-show="itHasDelivery">
-					<div class="form-group">
-						{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
-						{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
-					</div>		
-				</div>
-
 				<div class="form-group">
 					{!! Form::label('minimumDeliveryTime', 'Minimum Delivery Time', ['class' => 'control-label']) !!}
 					{!! Form::text('minimumDeliveryTime', null, ['class' => 'form-control']) !!}
@@ -81,7 +87,7 @@
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
 											<select name="timings[@{{$index}}][open]" class="form-control">
-												<option ng-repeat="time in timings" value="@{{time}}">@{{time}}</option>
+												<option ng-repeat="time in timeRange" ng-selected="time == timing.open">@{{time}}</option>
 											</select>
 											
 											<div class="input-group-addon">
@@ -95,7 +101,7 @@
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
 											<select name="timings[@{{$index}}][close]" class="form-control">
-												<option ng-repeat="time in timings" value="@{{time}}">@{{time}}</option>
+												<option ng-repeat="time in timeRange" ng-selected="time == timing.close">@{{time}}</option>
 											</select>											
 											
 											<div class="input-group-addon"><i class="glyphicon glyphicon-time"></i></div>
@@ -137,7 +143,14 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					{!! Form::label('country', null, ['class' => 'control-label']) !!}
-					{!! Form::select('countryCode', $countries, $restaurant->countryCode, ['class' => 'form-control']) !!}
+{{-- 					{!! Form::select('countryCode', $countries, $restaurant->countryCode, ['class' => 'form-control']) !!}
+ --}}
+ 						<h3>@{{countryCode}}</h3>
+ 						<input type="text" value="{{$restaurant->countryCode}}" ng-model="countryCode" />
+ 						
+					<select name="countryCode" class="form-control">
+						<option ng-repeat="country in countries" ng-selected="country == countryCode">@{{country}}</option>
+					</select>					
 				</div>	
 
 				<div class="form-group">
@@ -177,12 +190,16 @@
 			
 		</div>	
 
+		<h3 class="form-title">Upload Logo</h3>
+		{!! Form::file('logo',['class' => 'form-control']) !!}
+
+		<hr />
+
 		<div class="form-group">
 			{!! Form::submit('Update Restaurant Information', ['class' => 'btn btn-primary']) !!}
 		</div>
 
-		<input type="hidden" name="id" ng-model="restaurantId" value="{{$restaurant->id}}" />
-	{{-- 	{!! Form::hidden('id', $restaurant->id) !!} --}}
+		{!! Form::hidden('id', $restaurant->id, ['ng-model' => 'restaurantId']) !!}
 
 	{!! Form::close() !!}
 	

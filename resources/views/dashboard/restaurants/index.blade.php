@@ -13,11 +13,12 @@
 				</td>
 				<td>
 					<h3>{{ $restaurant->name }}</h3>
-					<p>Description</p>
-				</td>
-				<td class="text-right">
+					<p>{!! str_limit($restaurant->description,300,'...') !!}</p>
 					<a href="{{ route('dashboard.restaurants.edit', $restaurant->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
 					<a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+				</td>
+				<td class="text-right">
+					
 				</td>
 			</tr>
 			@endforeach

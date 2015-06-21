@@ -32,6 +32,10 @@ elixir(function(mix) {
             'modernizr.js',
     		'app.js'
     		])
+        .scripts([
+            'angular.js'
+            ], 'public/js/angular.js')
+
     	.version(['css/all.css','js/all.js'])
 });
 
