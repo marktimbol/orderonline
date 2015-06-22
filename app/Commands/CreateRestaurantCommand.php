@@ -11,9 +11,6 @@ class CreateRestaurantCommand extends Command {
 	use InteractsWithQueue, SerializesModels;
 
 	public $name;
-	public $contactName;
-	public $email;
-	public $password;
 	public $country;
 	public $telephone;
 	// public $address;
@@ -28,9 +25,6 @@ class CreateRestaurantCommand extends Command {
 	public function __construct( $name, $contactName, $email, $password, $country, $telephone )
 	{
 		$this->name = $name;
-		$this->contactName = $contactName;
-		$this->email = $email;
-		$this->password = $password;
 		$this->country = $country;
 		$this->telephone = $telephone;
 	}

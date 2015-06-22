@@ -24,4 +24,10 @@ class RestaurantRepository implements RestaurantRepositoryInterface {
 
 		return $restaurant;
 	}
+
+	public function updateLogo($id, $photo) {
+		$restaurant = $this->find($id);
+		$restaurant->logo = $photo;
+		$restaurant->save();
+	}
 }

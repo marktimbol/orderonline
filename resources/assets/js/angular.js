@@ -10,7 +10,7 @@ app.controller('restaurantController', function($scope, $http) {
 	//$scope.days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 	//$scope.timings = [{"day":"Sunday","open":"11:30 AM","close":"11:30 AM","dayoff":"0"},{"day":"Monday","open":"11:30 AM","close":"11:30 AM","dayoff":"0"},{"day":"Tuesday","open":"11:30 AM","close":"11:30 AM","dayoff":"0"},{"day":"Wednesday","open":"11:30 AM","close":"11:30 AM","dayoff":"0"},{"day":"Thursday","open":"11:30 AM","close":"11:30 AM","dayoff":"0"},{"day":"Friday","open":"11:30 AM","close":"11:30 AM","dayoff":"1"},{"day":"Saturday","open":"11:30 AM","close":"11:30 AM","dayoff":"1"}];
 
-	$scope.countryCode = '';
+	$scope.countryCode;
 	$scope.countries = [];
 	$scope.restaurantId = 24;
 	$scope.restaurantTimings = [];

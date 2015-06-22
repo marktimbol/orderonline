@@ -78,12 +78,9 @@ class CreateRestaurantCommandHandler {
 			['day' => 'Thursday', 'open' => '', 'close' => '', 'dayoff' => ''],
 			['day' => 'Friday', 'open' => '', 'close' => '', 'dayoff' => ''],
 			['day' => 'Saturday', 'open' => '', 'close' => '', 'dayoff' => '']
-
 		);
 		
 		$this->timing->store($restaurant->id, $defaultTimings);
-
-
 
 		event( new RestaurantWasRegistered( $restaurant ) );
 

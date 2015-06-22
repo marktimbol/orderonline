@@ -9,4 +9,6 @@ interface RestaurantRepositoryInterface {
 	public function store($data);
 
 	public function update($id, $data);
+
+	public function updateLogo($id, $data);
 }

@@ -143,14 +143,8 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					{!! Form::label('country', null, ['class' => 'control-label']) !!}
-{{-- 					{!! Form::select('countryCode', $countries, $restaurant->countryCode, ['class' => 'form-control']) !!}
- --}}
- 						<h3>@{{countryCode}}</h3>
- 						<input type="text" value="{{$restaurant->countryCode}}" ng-model="countryCode" />
- 						
-					<select name="countryCode" class="form-control">
-						<option ng-repeat="country in countries" ng-selected="country == countryCode">@{{country}}</option>
-					</select>					
+					{!! Form::select('countryCode', $countries, $restaurant->countryCode, ['class' => 'form-control']) !!}
+				
 				</div>	
 
 				<div class="form-group">
@@ -190,7 +184,16 @@
 			
 		</div>	
 
-		<h3 class="form-title">Upload Logo</h3>
+		<h3 class="form-title">Logo</h3>
+		
+		@if($restaurant->logo)
+			<div>
+				<img src="/images/uploads/{{$restaurant->logo}}" width="200" />
+			</div>
+			<br />
+		@endif
+		
+		{!! Form::label('upload', 'Upload Logo', ['class' => 'control-label']) !!}
 		{!! Form::file('logo',['class' => 'form-control']) !!}
 
 		<hr />

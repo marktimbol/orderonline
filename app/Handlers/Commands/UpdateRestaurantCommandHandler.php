@@ -32,8 +32,7 @@ class UpdateRestaurantCommandHandler {
 	 */
 	public function handle(UpdateRestaurantCommand $command)
 	{
-		dd($command->logo);
-
+	
 		$data = [
 			'name'					=> $command->name,
 			'description'			=> $command->description,	

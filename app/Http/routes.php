@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Todo: Update Timings table
+ * Todo: Fix Creating Restaurant; Apply single responsibility principle
  */
 
 use App\Restaurant;

@@ -22,20 +22,10 @@ class UpdateRestaurantRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' 					=> 'required',
-			//'description'			=> '',
-			'telephone'				=> 'required',
-			//'workingHours'			=> '',
-			//'minimumOrderAmount'	=> '',
-			//'hasDelivery'			=> '',
-			//'deliveryCharge'		=> '',
-			//'minimumDeliveryTime'	=> '',
-			//'paymentMethod'			=> 'required',
-			'countryCode'			=> 'required'
-			//'city'					=> '',
-			//'zip'					=> '',
-			//'address'				=> '',
-			//'cuisine'				=> 'required'
+			'name' 			=> 'required',
+			'telephone'		=> 'required',
+			'countryCode'	=> 'required',
+			'logo' 			=> 'image|mimes:jpeg,jpg,png',
 		];
 	}
 

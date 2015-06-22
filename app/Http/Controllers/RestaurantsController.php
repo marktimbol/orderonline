@@ -11,8 +11,11 @@ use App\Http\Requests\CreateRestaurantRequest;
 use App\Http\Requests\UpdateRestaurantRequest;
 
 //Commands
+use App\Commands\CreateUserCommand;
 use App\Commands\CreateRestaurantCommand;
 use App\Commands\UpdateRestaurantCommand;
+
+use App\Commands\UploadPhotoCommand;
 
 //Repo
 use App\Repo\Restaurants\RestaurantRepositoryInterface;
@@ -78,6 +81,8 @@ class RestaurantsController extends Controller {
 	 */
 	public function storeRestaurant( CreateRestaurantRequest $request) {
 
+		$this->dispatchFrom( CreateUserCommand::class, $request);
+
 		$this->dispatchFrom( CreateRestaurantCommand::class, $request );
 
 		Flash::success('Thank you for registering your restaurant with us.');
@@ -123,9 +128,16 @@ class RestaurantsController extends Controller {
 	 * @return Response
 	 */
 	public function update( UpdateRestaurantRequest $request )
-	{
+	{	
+		if($request->hasFile('logo')) {
+			$this->dispatch(
+				new UploadPhotoCommand($request->id, $request->file('logo'))
+			);
+		}
 
 		$this->dispatchFrom( UpdateRestaurantCommand::class, $request );
+
+
 
 		if( $request->hasFile('logo') ) {
 			
