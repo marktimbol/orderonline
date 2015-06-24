@@ -81,7 +81,7 @@ class RestaurantsController extends Controller {
 	 */
 	public function storeRestaurant( CreateRestaurantRequest $request) {
 
-		$this->dispatchFrom( CreateUserCommand::class, $request);
+		$this->dispatchFrom( CreateUserCommand::class, $request );
 
 		$this->dispatchFrom( CreateRestaurantCommand::class, $request );
 

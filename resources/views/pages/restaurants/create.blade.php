@@ -24,7 +24,8 @@
 
 				<div class="form-group">
 					{!! Form::label('telephone', null, ['class' => 'control-label']) !!}
-					{!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!}
+					{{-- {!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!} --}}
+					<input type="tel" name="telephone" class="form-control" id="mobile" />
 				</div>	
 
 				<h3 class="form-title">Create Account</h3>
@@ -48,7 +49,10 @@
 				<div class="form-group">
 					{!! Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) !!}
 					{!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-				</div>					
+				</div>			
+
+				{!! Form::hidden('hasRestaurant', 1) !!}
+				{!! Form::hidden('role', 'user') !!}		
 
 				<?php /*
 				<div class="form-group">

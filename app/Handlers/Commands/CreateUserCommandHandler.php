@@ -6,6 +6,8 @@ use Illuminate\Queue\InteractsWithQueue;
 
 use App\Repo\Users\UserRepositoryInterface;
 
+use Session;
+
 class CreateUserCommandHandler {
 
 	protected $user;
@@ -27,11 +29,13 @@ class CreateUserCommandHandler {
 	 */
 	public function handle(CreateUserCommand $command)
 	{
+	
 		$data = [
-			'name' 				=> $command->name,
+			'name' 				=> $command->contactName,
 			'email' 			=> $command->email,
 			'password'			=> $command->password,
-			'restaurantOwner' 	=> 1
+			'hasRestaurant' 	=> (int)$command->hasRestaurant,
+			'role'				=> $command->role
 		];		
 
 		/**
@@ -39,6 +43,12 @@ class CreateUserCommandHandler {
 		 * @var [type]
 		 */
 		$user = $this->user->store( $data );
+
+		Session::put('user_id', $user->id);
+		Session::put('user_name', $command->contactName);
+		Session::put('user_email', $command->email);
+
+
 	}
 
 }

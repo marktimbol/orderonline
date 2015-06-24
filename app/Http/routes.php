@@ -7,6 +7,10 @@
 use App\Restaurant;
 use App\Timings;
 
+Route::get('/', function() {
+	echo getenv('ADMIN_EMAIL');
+	echo getenv('ADMIN_NAME');
+});
 
 Route::get('time-range', function() {
   $timings = hoursRange( 0, 86400, 60 * 15 );

@@ -18,11 +18,9 @@ class CreateRestaurantsTable extends Migration {
 			$table->integer('user_id')->unsigned();
 
 			$table->string('name'); //restaurant Name
-			$table->text('description'); //restaurant description
+			$table->text('description');
 			
-			$table->string('contactName'); //contact name
 			$table->string('email');
-			
 			$table->string('telephone');
 			
 			$table->string('countryCode');
@@ -30,8 +28,7 @@ class CreateRestaurantsTable extends Migration {
 			$table->string('zip');			
 			$table->text('address');
 			
-			$table->string('workingHours');
-			$table->string('minimumDeliveryTime');
+			$table->string('averageDeliveryTime');
 			$table->double('minimumOrderAmount');
 			$table->double('deliveryCharge');
 			$table->string('paymentMethod');

@@ -22,7 +22,7 @@ class CreateRestaurantCommand extends Command {
 	 *
 	 * @return void
 	 */
-	public function __construct( $name, $contactName, $email, $password, $country, $telephone )
+	public function __construct( $name, $country, $telephone )
 	{
 		$this->name = $name;
 		$this->country = $country;

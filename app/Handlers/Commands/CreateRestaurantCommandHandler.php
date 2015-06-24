@@ -5,17 +5,15 @@ use App\Commands\CreateRestaurantCommand;
 use Illuminate\Queue\InteractsWithQueue;
 
 use App\Repo\Restaurants\RestaurantRepositoryInterface;
-use App\Repo\Users\UserRepositoryInterface;
 use App\Repo\Timings\TimingRepositoryInterface;
 
 use App\Events\RestaurantWasRegistered;
-
 use Auth;
+use Session;
 
 class CreateRestaurantCommandHandler {
 
 	protected $restaurant;
-	protected $user;
 	protected $timing;
 
 	/**
@@ -23,10 +21,9 @@ class CreateRestaurantCommandHandler {
 	 *
 	 * @return void
 	 */
-	public function __construct( RestaurantRepositoryInterface $restaurant, UserRepositoryInterface $user, TimingRepositoryInterface $timing )
+	public function __construct( RestaurantRepositoryInterface $restaurant, TimingRepositoryInterface $timing )
 	{
 		$this->restaurant = $restaurant;
-		$this->user = $user;
 		$this->timing = $timing;
 	}
 
@@ -39,24 +36,9 @@ class CreateRestaurantCommandHandler {
 	public function handle(CreateRestaurantCommand $command)
 	{
 
-		$userData = [
-			'name' 				=> $command->contactName,
-			'email' 			=> $command->email,
-			'password'			=> $command->password,
-			'restaurantOwner' 	=> 1
-		];		
-
-		/**
-		 * Store user information
-		 * @var [type]
-		 */
-		$user = $this->user->store( $userData );
-
-		$restaurantData = [
-			'user_id'		=> $user->id,
+		$data = [
+			'user_id'		=> Session::get('user_id'),
 			'name' 			=> $command->name,
-			'contactName' 	=> $command->contactName,
-			'email' 		=> $command->email,
 			'countryCode'	=> $command->country,
 			'telephone' 	=> $command->telephone
 		];		
@@ -65,7 +47,7 @@ class CreateRestaurantCommandHandler {
 		 * Store restaurant information
 		 * @var [type]
 		 */
-		$restaurant = $this->restaurant->store( $restaurantData );
+		$restaurant = $this->restaurant->store( $data );
 
 		/**
 		 * Store restaurant timings
@@ -84,7 +66,11 @@ class CreateRestaurantCommandHandler {
 
 		event( new RestaurantWasRegistered( $restaurant ) );
 
-		Auth::loginUsingId( $user->id );
+		Auth::loginUsingId( Session::get('user_id') );
+
+		Session::forget('user_id');
+		Session::forget('user_name');
+		Session::forget('user_email');
 	}
 
 }

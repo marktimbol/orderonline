@@ -4,20 +4,24 @@ use App\Commands\Command;
 
 class CreateUserCommand extends Command {
 
-	public $name;
+	public $contactName;
 	public $email;
 	public $password;
+	public $hasRestaurant;
+	public $role;
 
 	/**
 	 * Create a new command instance.
 	 *
 	 * @return void
 	 */
-	public function __construct($name, $email, $password)
+	public function __construct($contactName, $email, $password, $hasRestaurant, $role)
 	{
-		$this->name = $name;
+		$this->contactName = $contactName;
 		$this->email = $email;
 		$this->password = $password;
+		$this->hasRestaurant = (int)$hasRestaurant;
+		$this->role = $role;
 	}
 
 }

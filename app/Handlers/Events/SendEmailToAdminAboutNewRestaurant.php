@@ -6,6 +6,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldBeQueued;
 
 use Illuminate\Mail\Mailer;
+use Session;
 
 class SendEmailToAdminAboutNewRestaurant {
 
@@ -30,23 +31,20 @@ class SendEmailToAdminAboutNewRestaurant {
 	public function handle(RestaurantWasRegistered $event)
 	{
 
-		$name = $event->restaurant->name;
-		$email = $event->restaurant->email;
+		$restaurantName = $event->restaurant->name;
+		$contactName = Session::get('user_name');
+		$email = Session::get('user_email');
 
 		$emailData = [
-			'user_id'		=> $event->restaurant->user_id,
-			'name' 			=> $name,
-			'contactName' 	=> $event->restaurant->contactName,
+			'restaurantName' => $restaurantName,
+			'name' 			=> $contactName,
 			'email' 		=> $email,
 			'telephone' 	=> $event->restaurant->telephone,
 			'countryCode'	=> $event->restaurant->countryCode
-			// 'address'		=> $event->restaurant->address,
-			// 'hasDelivery' 	=> $event->restaurant->hasDelivery,
-			// 'cuisine' 		=> $event->restaurant->cuisine
 		];
 
 
-		$subject = $name . ' has been registered from the website.';
+		$subject = $restaurantName . ' has been registered from the website.';
 
 		$this->mailer->send('emails.welcome', $emailData, function($message) use( $subject)
 		{

@@ -21,7 +21,8 @@ class CreateUsersTable extends Migration {
 			$table->string('workPhone');
 			$table->string('homePhone');
 			$table->string('mobile');
-			$table->boolean('restaurantOwner');
+			$table->enum('hasRestaurant', [1, 0]);
+			$table->string('role')->default('user');
 			$table->rememberToken();
 			$table->timestamps();
 		});

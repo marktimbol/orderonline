@@ -20,6 +20,12 @@
 
 		<div class="row">
 			<div class="col-md-6">
+
+				<div class="form-group">
+					{!! Form::label('email', null, ['class' => 'control-label']) !!}
+					{!! Form::email('email', null, ['class' => 'form-control']) !!}
+				</div>	
+
 				<div class="form-group">
 					{!! Form::label('telephone', null, ['class' => 'control-label']) !!}
 					{!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!}
@@ -54,8 +60,8 @@
 
 			<div class="col-md-6">
 				<div class="form-group">
-					{!! Form::label('minimumDeliveryTime', 'Minimum Delivery Time', ['class' => 'control-label']) !!}
-					{!! Form::text('minimumDeliveryTime', null, ['class' => 'form-control']) !!}
+					{!! Form::label('averageDeliveryTime', 'Average Delivery Time', ['class' => 'control-label']) !!}
+					{!! Form::text('averageDeliveryTime', null, ['class' => 'form-control']) !!}
 				</div>	
 							
 				<div class="form-group">
@@ -202,7 +208,7 @@
 			{!! Form::submit('Update Restaurant Information', ['class' => 'btn btn-primary']) !!}
 		</div>
 
-		{!! Form::hidden('id', $restaurant->id, ['ng-model' => 'restaurantId']) !!}
+		{!! Form::text('id', $restaurant->id, ['ng-model' => 'restaurantId']) !!}
 
 	{!! Form::close() !!}
 	
