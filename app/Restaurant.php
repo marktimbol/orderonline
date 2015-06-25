@@ -7,20 +7,20 @@ class Restaurant extends Model {
 	protected $fillable = [
 		'user_id',
 		'name',
-		'contactName',
+		'description',
 		'email',
 		'telephone',
-		'countryCode',
-		'address',
-		'hasDelivery',
-		'description',
-		'city',
+		'country',
+		'state',
 		'zip',
-		'workingHours',
-		'minimumDeliveryTime',
+		'address',
+		'currency',
 		'minimumOrderAmount',
+		'paymentMethod',
+		'hasDelivery',
+		'averageDeliveryTime',
 		'deliveryCharge',
-		'paymentMethod'
+		'logo'
 	];
 	
 	public function cuisines() {

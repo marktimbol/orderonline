@@ -19,7 +19,7 @@ elixir(function(mix) {
             'font-awesome.css',
             'intlTelInput.css',
             'sidebar.css',
-            'bootstrap-timepicker.min.css',
+            'bootstrap-formhelpers.min.css',
     		'app.css'
     		])
     	.scripts([
@@ -28,7 +28,7 @@ elixir(function(mix) {
             'classie.js',
             'intlTelInput.min.js',
             'angular.min.js',
-            'bootstrap-timepicker.js',
+            'bootstrap-formhelpers.min.js',
             'modernizr.js',
     		'app.js'
     		])

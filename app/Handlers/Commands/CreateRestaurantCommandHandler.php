@@ -39,7 +39,7 @@ class CreateRestaurantCommandHandler {
 		$data = [
 			'user_id'		=> Session::get('user_id'),
 			'name' 			=> $command->name,
-			'countryCode'	=> $command->country,
+			'country'		=> $command->country,
 			'telephone' 	=> $command->telephone
 		];		
 

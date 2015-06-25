@@ -7,20 +7,21 @@ class UpdateRestaurantCommand extends Command {
 	public $id;
 	public $name;
 	public $description;
+	public $email;
 	public $telephone;
-	public $workingHours;
-	public $minimumOrderAmount;
-	public $hasDelivery;
-	public $deliveryCharge;
-	public $minimumDeliveryTime;
-	public $paymentMethod;
-	public $countryCode;
-	public $city;
+	public $country;
+	public $state;
 	public $zip;
 	public $address;
-	public $cuisine;
+	public $currency;
+	public $minimumOrderAmount;
+	public $paymentMethod;
+	public $hasDelivery;
+	public $averageDeliveryTime;
+	public $deliveryCharge;
 	public $logo;
 
+	public $cuisine;
 	public $timings = array();
 
 	/**
@@ -28,20 +29,20 @@ class UpdateRestaurantCommand extends Command {
 	 *
 	 * @return void
 	 */
-	public function __construct( $id, $name, $description, $telephone, $workingHours=0, $minimumOrderAmount, $hasDelivery = null, $deliveryCharge, $minimumDeliveryTime, $paymentMethod, $countryCode, $city, $zip, $address, $cuisine, $timings = array())
+	public function __construct( $id, $name, $description, $email, $telephone, $country, $state, $zip, $address, $currency, $minimumOrderAmount, $paymentMethod, $hasDelivery = null, $averageDeliveryTime, $deliveryCharge, $logo, $cuisine, $timings = array())
 	{
 		$this->id = $id;
 		$this->name = $name;
 		$this->description = $description;
+		$this->email = $email;
 		$this->telephone = $telephone;
-		$this->workingHours = $workingHours;
 		$this->minimumOrderAmount = $minimumOrderAmount;
 		$this->hasDelivery = $hasDelivery;
 		$this->deliveryCharge = $deliveryCharge;
-		$this->minimumDeliveryTime = $minimumDeliveryTime;
+		$this->averageDeliveryTime = $averageDeliveryTime;
 		$this->paymentMethod = $paymentMethod;
-		$this->countryCode = $countryCode;
-		$this->city = $city;
+		$this->country = $country;
+		$this->state = $state;
 		$this->zip = $zip;
 		$this->address = $address;
 		$this->cuisine = $cuisine;

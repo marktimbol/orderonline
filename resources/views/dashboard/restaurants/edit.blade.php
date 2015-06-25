@@ -4,7 +4,7 @@
 
 	<h1>Update {{ $restaurant->name }}</h1>
 
-	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController']) !!}
+	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController', 'ng-init' => 'init(1)'] ) !!}
 		
 		<h3 class="form-title">Restaurant Information</h3>
 
@@ -68,6 +68,12 @@
 					{!! Form::label('paymentMethod', 'Payment Method', ['class' => 'control-label']) !!}
 					{!! Form::text('paymentMethod', null, ['class' => 'form-control']) !!}
 				</div>
+
+				<div class="form-group">
+					{!! Form::label('currency', null, ['class' => 'control-label']) !!}
+					<select name="currency" class="form-control bfh-currencies" data-currency="{{$restaurant->currency}}"></select>
+				</div>				
+				
 			</div>
 		</div>
 
@@ -149,13 +155,12 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					{!! Form::label('country', null, ['class' => 'control-label']) !!}
-					{!! Form::select('countryCode', $countries, $restaurant->countryCode, ['class' => 'form-control']) !!}
-				
+					<select name="country" id="countries_states1" class="form-control bfh-countries" data-country="{{$restaurant->country}}"></select>
 				</div>	
 
 				<div class="form-group">
-					{!! Form::label('city', null, ['class' => 'control-label']) !!}
-					{!! Form::text('city', null, ['class' => 'form-control']) !!}
+					{!! Form::label('state', null, ['class' => 'control-label']) !!}
+					<select name="state" class="form-control bfh-states" data-country="countries_states1" data-state="{{$restaurant->state}}"></select>
 				</div>
 			</div>
 
@@ -208,7 +213,7 @@
 			{!! Form::submit('Update Restaurant Information', ['class' => 'btn btn-primary']) !!}
 		</div>
 
-		{!! Form::text('id', $restaurant->id, ['ng-model' => 'restaurantId']) !!}
+		{!! Form::hidden('id', $restaurant->id) !!}
 
 	{!! Form::close() !!}
 	

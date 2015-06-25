@@ -110,6 +110,7 @@ class RestaurantsController extends Controller {
 	{
 		$restaurant = $this->restaurant->find( $restaurantId );
 		
+		
 		//dd( $restaurant->toArray() );
 
 		if( $this->user->owns($restaurant) ) {

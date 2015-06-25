@@ -24,7 +24,8 @@ class UpdateRestaurantRequest extends Request {
 		return [
 			'name' 			=> 'required',
 			'telephone'		=> 'required',
-			'countryCode'	=> 'required',
+			'country'		=> 'required',
+			'state'			=> 'required',
 			'logo' 			=> 'image|mimes:jpeg,jpg,png',
 		];
 	}

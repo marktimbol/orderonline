@@ -12,11 +12,15 @@ app.controller('restaurantController', function($scope, $http) {
 
 	$scope.countryCode;
 	$scope.countries = [];
-	$scope.restaurantId = 24;
+	$scope.restaurantId = 1;
 	$scope.restaurantTimings = [];
 	$scope.timeRange = [];
 	$scope.openTime;
 	$scope.closeTime;
+
+	$scope.init = function(id){
+		$scope.restaurantId = id;
+	}
 
 	$http.get('http://order-online.dev/countries')
 			.success(function(response) {
@@ -28,7 +32,9 @@ app.controller('restaurantController', function($scope, $http) {
 				$scope.timeRange = response.data;
 			});
 
-	$http.get('http://order-online.dev/restaurant-timings/24')
+	$scope.timingsUri = 'http://order-online.dev/restaurant-timings/' + $scope.restaurantId;
+
+	$http.get($scope.timingsUri)
 			.success(function(response) {
 				$scope.restaurantTimings = JSON.parse(response.data.schedule);
 			});

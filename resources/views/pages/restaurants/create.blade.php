@@ -16,12 +16,12 @@
 					{!! Form::label('name','Restaurant Name', ['class' => 'control-label']) !!}
 					{!! Form::text('name', null, ['class' => 'form-control']) !!}
 				</div>
-								
+		
 				<div class="form-group">
 					{!! Form::label('country', null, ['class' => 'control-label']) !!}
-					{!! Form::select('country', $countries, null, ['class' => 'form-control']) !!}
+					<select name="country" class="form-control bfh-countries"></select>
 				</div>	
-
+				
 				<div class="form-group">
 					{!! Form::label('telephone', null, ['class' => 'control-label']) !!}
 					{{-- {!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!} --}}

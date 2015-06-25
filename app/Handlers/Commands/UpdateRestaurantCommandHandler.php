@@ -36,33 +36,18 @@ class UpdateRestaurantCommandHandler {
 		$data = [
 			'name'					=> $command->name,
 			'description'			=> $command->description,	
+			'email'					=> $command->email,
 			'telephone'				=> $command->telephone,
-			'workingHours'			=> $command->workingHours,
 			'minimumOrderAmount'	=> $command->minimumOrderAmount,
 			'hasDelivery'			=> $command->hasDelivery,
 			'deliveryCharge'		=> $command->deliveryCharge,
-			'minimumDeliveryTime'	=> $command->minimumDeliveryTime,
+			'averageDeliveryTime'	=> $command->averageDeliveryTime,
 			'paymentMethod'			=> $command->paymentMethod,
-			'countryCode'			=> $command->countryCode,
-			'city'					=> $command->city,
+			'country'				=> $command->country,
+			'state'					=> $command->state,
 			'zip'					=> $command->zip,
-			'address'				=> $command->address,
-			'cuisine'				=> $command->cuisine
+			'address'				=> $command->address
 		];
-
-		// if( $command->logo ) {
-			
-		// 	$logo = request()->file('passport');
-		// 	$filename = $logo->getClientOriginalName();
-		// 	$extension = $logo->getClientOriginalExtension();								
-		// 	$data['logo'] = time().'.'.$extension;
-
-		// 	try {
-		// 		request()->file('logo')->move(public_path() . '/images/uploads/', time().'.'.$extension);
-		// 	} catch (Exception $e) {
-				
-		// 	}	
-		// }
 
 		/**
 		 * Update restaurant information
@@ -73,10 +58,6 @@ class UpdateRestaurantCommandHandler {
 		/**
 		 * Update restaurant timings
 		 */
-		// for($i = 0; $i <= 6; $i++) {
-		// 	$command->timings[$i]['dayoff'] = $command->timings[$i]['dayoff'] ? 1 : 0;
-		// }
-
 		$this->timing->update($command->id, $command->timings);
 
 		/**
