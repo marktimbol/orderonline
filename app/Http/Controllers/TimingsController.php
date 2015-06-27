@@ -5,15 +5,21 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
-use App\Restaurant;
+use App\Repo\Restaurants\RestaurantRepositoryInterface;
 
 use Response;
 
 class TimingsController extends Controller {
 
+	protected $restaurant;
+
+	public function __construct(RestaurantRepositoryInterface $restaurant) {
+		$this->restaurant = $restaurant;
+	}
+
 	public function getTimings($restaurantId) {
 
-		$restaurant = Restaurant::findOrFail($restaurantId);
+		$restaurant = $this->restaurant->find($restaurantId);
 
 		return Response::json(['data' => $restaurant->timings->toArray()]);
 

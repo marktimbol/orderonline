@@ -1,27 +1,12 @@
 <?php
 
-/**
- * Todo: Fix Creating Restaurant; Apply single responsibility principle
- */
-
-use App\Restaurant;
-use App\Timings;
-
-Route::get('/', function() {
-	echo getenv('ADMIN_EMAIL');
-	echo getenv('ADMIN_NAME');
-});
-
 Route::get('time-range', function() {
   $timings = hoursRange( 0, 86400, 60 * 15 );
   return Response::json(['data' => $timings]);
 });
 
 
-Route::get('restaurant-timings/{id}', function($id) {
-	$restaurant = Restaurant::findOrFail($id);
-	return Response::json(['data' => $restaurant->timings->toArray()]);
-});
+Route::get('restaurant-timings/{id}', 'TimingsController@getTimings');
 
 Route::get('countries', 'CountriesController@index');
 

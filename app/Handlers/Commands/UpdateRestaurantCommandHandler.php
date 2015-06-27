@@ -46,7 +46,8 @@ class UpdateRestaurantCommandHandler {
 			'country'				=> $command->country,
 			'state'					=> $command->state,
 			'zip'					=> $command->zip,
-			'address'				=> $command->address
+			'address'				=> $command->address,
+			'currency'				=> $command->currency
 		];
 
 		/**

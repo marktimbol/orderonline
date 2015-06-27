@@ -29,7 +29,7 @@ class UpdateRestaurantCommand extends Command {
 	 *
 	 * @return void
 	 */
-	public function __construct( $id, $name, $description, $email, $telephone, $country, $state, $zip, $address, $currency, $minimumOrderAmount, $paymentMethod, $hasDelivery = null, $averageDeliveryTime, $deliveryCharge, $logo, $cuisine, $timings = array())
+	public function __construct( $id, $name, $description, $email, $telephone, $country, $state, $zip, $address, $currency, $minimumOrderAmount, $paymentMethod, $hasDelivery = null, $averageDeliveryTime, $deliveryCharge, $logo=null, $cuisine, $timings = array())
 	{
 		$this->id = $id;
 		$this->name = $name;
@@ -45,6 +45,7 @@ class UpdateRestaurantCommand extends Command {
 		$this->state = $state;
 		$this->zip = $zip;
 		$this->address = $address;
+		$this->currency = $currency;
 		$this->cuisine = $cuisine;
 		$this->timings = $timings;
 	}
