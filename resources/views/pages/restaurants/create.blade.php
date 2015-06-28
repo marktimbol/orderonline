@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-md-8 col-md-offset-2">
 			
 			<h1>Add Your Restaurant</h1>
 
@@ -19,7 +19,7 @@
 		
 				<div class="form-group">
 					{!! Form::label('country', null, ['class' => 'control-label']) !!}
-					<select name="country" class="form-control bfh-countries"></select>
+					<select name="country" class="form-control bfh-countries chosen-select" data-flags="true" data-country="<?=getClientCountry(getClientIp())?>"></select>
 				</div>	
 				
 				<div class="form-group">
@@ -46,41 +46,19 @@
 					{!! Form::password('password', ['class' => 'form-control']) !!}
 				</div>	
 
-				<div class="form-group">
+{{-- 				<div class="form-group">
 					{!! Form::label('password_confirmation', 'Confirm Password', ['class' => 'control-label']) !!}
 					{!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
-				</div>			
+				</div>	 --}}		
 
 				{!! Form::hidden('hasRestaurant', 1) !!}
 				{!! Form::hidden('role', 'user') !!}		
-
-				<?php /*
-				<div class="form-group">
-					{!! Form::label('address',null, ['class' => 'control-label']) !!}
-					{!! Form::textarea('address', null, ['class' => 'form-control', 'rows' => 3]) !!}
-				</div>	
-	
-				<div class="form-group">
-					{!! Form::label('cuisine', 'Primary Cuisine', ['class' => 'control-label']) !!}
-					{!! Form::select('cuisine', $cuisines, null, ['class' => 'form-control']) !!}
-				</div>	
-			
-				<div class="form-group">
-					<label class="checkbox-inline">
-					{!! Form::checkbox('hasDelivery', 1) !!} Does your restaurant have delivery?
-					</label>
-				</div>	
-				*/ ?>
 
 				<div class="form-group">
 					{!! Form::submit('Submit Restaurant', ['class' => 'btn btn-primary']) !!}
 				</div>
 
 			{!! Form::close() !!}
-
-		</div>
-
-		<div class="col-md-4">
 
 		</div>
 

@@ -160,4 +160,7 @@ class RestaurantsController extends Controller {
 		//
 	}
 
+	public function getRestaurant($restaurants) {
+		return $this->restaurant->find($restaurants);
+	}
 }

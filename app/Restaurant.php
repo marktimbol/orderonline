@@ -31,6 +31,10 @@ class Restaurant extends Model {
 		return $this->belongsTo('App\User');
 	}
 
+	public function categories() {
+		return $this->hasMany('App\Category');
+	}
+	
 	public function timings() {
 		return $this->hasOne('App\Timing');
 	}

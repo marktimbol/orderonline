@@ -12,7 +12,7 @@ app.controller('restaurantController', function($scope, $http) {
 
 	$scope.countryCode;
 	$scope.countries = [];
-	$scope.restaurantId = 1;
+	$scope.restaurantId = 2;
 	$scope.restaurantTimings = [];
 	$scope.timeRange = [];
 	$scope.openTime;

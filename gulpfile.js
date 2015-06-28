@@ -20,6 +20,7 @@ elixir(function(mix) {
             'intlTelInput.css',
             'sidebar.css',
             'bootstrap-formhelpers.min.css',
+            'chosen.css',
     		'app.css'
     		])
     	.scripts([
@@ -29,6 +30,7 @@ elixir(function(mix) {
             'intlTelInput.min.js',
             'angular.min.js',
             'bootstrap-formhelpers.min.js',
+            'chosen.jquery.min.js',
             'modernizr.js',
     		'app.js'
     		])

@@ -26,6 +26,9 @@ small.error {
 .navbar {
   margin-bottom: 0px; }
 
+.clear-margin-top {
+  margin-top: 0; }
+
 table.restaurants td {
   border-top: none !important;
   padding: 20px !important; }

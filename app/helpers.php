@@ -20,3 +20,24 @@ function hoursRange( $lower = 0, $upper = 86400, $step = 3600, $format = '' ) {
 
     return $times;
 }
+
+function getClientIp() {
+
+    $ip = getenv('HTTP_CLIENT_IP')?:
+    getenv('HTTP_X_FORWARDED_FOR')?:
+    getenv('HTTP_X_FORWARDED')?:
+    getenv('HTTP_FORWARDED_FOR')?:
+    getenv('HTTP_FORWARDED')?:
+    getenv('REMOTE_ADDR');
+
+    return $ip;
+}
+
+function getClientCountry($ip) {
+    try {
+        return file_get_contents("http://ipinfo.io/{$ip}/country");
+    } catch (Exception $e) {
+        
+    }
+    
+}

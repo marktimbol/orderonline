@@ -1,6 +1,8 @@
 $(document).ready( function() {
 
-	$("#mobile").intlTelInput({
+	$('.chosen-select').chosen();
+
+	$('#mobile').intlTelInput({
 		autoFormat: true,
 		nationalMode: false,
 		autoHideDialCode: false,

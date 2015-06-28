@@ -25,12 +25,9 @@ class CreateRestaurantRequest extends Request {
 			'name' 					=> 'required',
 			'contactName' 			=> 'required',
 			'email'					=> 'required|email',
-			'password'				=> 'required|min:8|confirmed',
-			'password_confirmation' => 'required',
+			'password'				=> 'required|min:8',
 			'country'				=> 'required',
-			'telephone' 			=> 'required',
-			// 'address' 				=> 'required',
-			// 'cuisine' 				=> 'required'
+			'telephone' 			=> 'required'
 		];
 	}
 

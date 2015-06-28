@@ -4,7 +4,7 @@
 
 	<h1>Update {{ $restaurant->name }}</h1>
 
-	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController', 'ng-init' => 'init(1)'] ) !!}
+	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController', 'ng-init' => 'init(2)'] ) !!}
 		
 		<h3 class="form-title">Restaurant Information</h3>
 
@@ -98,7 +98,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
-											<select name="timings[@{{$index}}][open]" class="form-control">
+											<select name="timings[@{{$index}}][open]" class="form-control chosen-select">
 												<option ng-repeat="time in timeRange" ng-selected="time == timing.open">@{{time}}</option>
 											</select>
 											
@@ -112,7 +112,7 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<div class="input-group bootstrap-timepicker">
-											<select name="timings[@{{$index}}][close]" class="form-control">
+											<select name="timings[@{{$index}}][close]" class="form-control chosen-select">
 												<option ng-repeat="time in timeRange" ng-selected="time == timing.close">@{{time}}</option>
 											</select>											
 											

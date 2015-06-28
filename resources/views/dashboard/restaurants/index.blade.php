@@ -10,16 +10,16 @@
 			<tr>
 				<td width="130">
 					@if($restaurant->logo)
-						<img src="/images/uploads/{{$restaurant->logo}}" width="100" height="100" class="img-circle" title="" alt="" />
+						<img src="/images/uploads/{{$restaurant->logo}}" class="img-thumbnail" title="" alt="" />
 					@else
-						<img src="http://placehold.it/100x100" width="100" height="100" class="img-circle" title="" alt="" />
+						<img src="http://placehold.it/100x100" width="100" height="100" class="img-thumbnail" title="" alt="" />
 					@endif
 				</td>
 				<td>
-					<h3>{{ $restaurant->name }}</h3>
+					<h3 class="clear-margin-top">{{ $restaurant->name }}</h3>
 					<p>{!! str_limit($restaurant->description,300,'...') !!}</p>
 					<a href="{{ route('dashboard.restaurants.edit', $restaurant->id) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
-					<a href="#" class="btn btn-default"><i class="fa fa-eye"></i></a>
+					<a href="{{ route('dashboard.restaurants.menus.index', $restaurant->id) }}" class="btn btn-default"><i class="fa fa-eye"></i></a>
 				</td>
 				<td class="text-right">
 					
