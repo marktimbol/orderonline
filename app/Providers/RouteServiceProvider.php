@@ -24,7 +24,11 @@ class RouteServiceProvider extends ServiceProvider {
 	{
 		parent::boot($router);
 
-		//
+		$router->bind('restaurants', 'App\Http\Controllers\RestaurantsController@getRestaurant');
+		$router->bind('categories', 'App\Http\Controllers\CategoriesController@getCategories');
+		// $router->bind('menus', 'MenusController@getMenus');
+		
+
 	}
 
 	/**

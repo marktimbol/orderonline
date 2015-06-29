@@ -4,7 +4,7 @@
 
 	<h1>Update {{ $restaurant->name }}</h1>
 
-	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController', 'ng-init' => 'init(2)'] ) !!}
+	{!! Form::model( $restaurant, ['method' => 'PUT', 'files' => true, 'route' => ['dashboard.restaurants.update', $restaurant->id], 'ng-controller' => 'restaurantController', 'ng-init' => 'init(1)'] ) !!}
 		
 		<h3 class="form-title">Restaurant Information</h3>
 

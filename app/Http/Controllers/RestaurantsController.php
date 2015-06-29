@@ -95,9 +95,9 @@ class RestaurantsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($id)
+	public function show($restaurants)
 	{
-		//
+		dd($restaurants);
 	}
 
 	/**
@@ -106,13 +106,10 @@ class RestaurantsController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit( $restaurantId )
+	public function edit( $restaurants )
 	{
-		$restaurant = $this->restaurant->find( $restaurantId );
+		$restaurant = $restaurants;
 		
-		
-		//dd( $restaurant->toArray() );
-
 		if( $this->user->owns($restaurant) ) {
 
 			return view('dashboard.restaurants.edit', compact('restaurant'));
@@ -137,12 +134,6 @@ class RestaurantsController extends Controller {
 		}
 
 		$this->dispatchFrom( UpdateRestaurantCommand::class, $request );
-
-
-
-		if( $request->hasFile('logo') ) {
-			
-		}
 
 		Flash::success('Restaurant information was updated.');
 

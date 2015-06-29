@@ -57,12 +57,11 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
 	Route::get('/', ['as' => 'dashboard', 'uses' => 'PagesController@dashboard']);
 	Route::get('forbidden', ['as' => 'forbidden', 'uses' => 'PagesController@forbidden']);
 
-	
 	Route::resource('restaurants', 'RestaurantsController');
-	
 
-	Route::resource('restaurants.menus', 'MenuController');
-	Route::resource('restaurants.categories', 'CategoryController');
+	Route::resource('restaurants.categories', 'CategoriesController');
+	Route::resource('restaurants.menus', 'MenusController');
+	
 	Route::get('restaurants/{id}/timings', 'TimingsController@getTimings');
 
 	Route::resource('users', 'UsersController', ['only' => ['show','edit','update']]);
