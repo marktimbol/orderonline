@@ -9,11 +9,7 @@
 			@foreach( $userRestaurants as $restaurant )
 			<tr>
 				<td width="130">
-					@if($restaurant->logo)
-						<img src="/images/uploads/{{$restaurant->logo}}" class="img-thumbnail" title="" alt="" />
-					@else
-						<img src="http://placehold.it/100x100" width="100" height="100" class="img-thumbnail" title="" alt="" />
-					@endif
+					{!! getLogo($restaurant->logo) !!}
 				</td>
 				<td>
 					<h3 class="clear-margin-top">{{ $restaurant->name }}</h3>

@@ -26,8 +26,7 @@ class RouteServiceProvider extends ServiceProvider {
 
 		$router->bind('restaurants', 'App\Http\Controllers\RestaurantsController@getRestaurant');
 		$router->bind('categories', 'App\Http\Controllers\CategoriesController@getCategories');
-		// $router->bind('menus', 'MenusController@getMenus');
-		
+		$router->bind('menus', 'App\Http\Controllers\MenusController@getMenus');
 
 	}
 

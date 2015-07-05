@@ -12,4 +12,5 @@ interface MenuRepositoryInterface {
 
 	public function destroy($id);
 	
+	public function updateLogo($id, $image);
 }

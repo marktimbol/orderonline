@@ -4,14 +4,22 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateMenuRequest;
 use App\Repo\Restaurants\RestaurantRepositoryInterface;
+use App\Repo\Menus\MenuRepositoryInterface;
+
+use Laracasts\Flash\Flash;
+use App\Commands\CreateMenuCommand;
+use App\Commands\UploadMenuPhotoCommand;
 
 class MenusController extends Controller {
 
 	protected $restaurant;
+	protected $menu;
 
-	public function __construct(RestaurantRepositoryInterface $restaurant) {
+	public function __construct(RestaurantRepositoryInterface $restaurant, MenuRepositoryInterface $menu) {
 		$this->restaurant = $restaurant;
+		$this->menu = $menu;
 	}
 	/**
 	 * Display a listing of the resource.
@@ -21,8 +29,10 @@ class MenusController extends Controller {
 	public function index($restaurants)
 	{
 		$restaurant = $restaurants;
-		
-		return view('dashboard.restaurants.menus.index', compact('restaurant'));
+
+		$menus = $restaurant->menus()->latest()->get();
+
+		return view('dashboard.restaurants.menus.index', compact('restaurant', 'menus'));
 	}
 
 	/**
@@ -30,9 +40,13 @@ class MenusController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function create()
+	public function create($restaurants)
 	{
-		//
+		$restaurant = $restaurants;
+
+		$categories = $restaurant->categories()->lists('name', 'id');
+
+		return view('dashboard.restaurants.menus.create', compact('restaurant', 'categories'));
 	}
 
 	/**
@@ -40,9 +54,20 @@ class MenusController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store()
+	public function store($restaurants, CreateMenuRequest $request)
 	{
-		//
+
+		$this->dispatchFrom(CreateMenuCommand::class, $request);	
+
+		if( $request->hasFile('image') ) {
+			$this->dispatch(
+				new UploadMenuPhotoCommand(session('menu_id'), $restaurants->id, $request->file('image'))
+			);		
+		}
+
+		Flash::success('New Menu has been added.');
+
+		return redirect()->route('dashboard.restaurants.menus.index', $restaurants->id);
 	}
 
 	/**
@@ -62,9 +87,14 @@ class MenusController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($restaurants, $menus)
 	{
-		//
+		$restaurant = $restaurants;
+		$menu = $menus;
+
+		$categories = $restaurant->categories()->lists('name', 'id');
+
+		return view('dashboard.restaurants.menus.edit', compact('restaurant', 'menu', 'categories'));
 	}
 
 	/**
@@ -88,5 +118,9 @@ class MenusController extends Controller {
 	{
 		//
 	}
+
+	public function getMenus($menus) {
+		return $this->menu->find($menus);
+	}		
 
 }

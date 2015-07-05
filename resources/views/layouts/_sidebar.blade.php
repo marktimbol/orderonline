@@ -2,12 +2,12 @@
 	<div id="sidebar-wrapper">
 		<ul class="sidebar-nav">
 			<li class="text-center">
-				<img src="/images/uploads/{{$restaurant->logo}}" width="150" class="img-thumbnail" alt="" title="" />
+				{!! getLogo($restaurant->logo) !!}
 			</li>
 			<li class="sidebar-brand text-center"><a href="#">{{$restaurant->name}}</a></li>	
 			<li>Address</li>	
 			<li><a href="{{ route('dashboard.restaurants.categories.index', $restaurant->id) }}">Categories</a></li>
-		    <li><a href="#">Products</a></li>
+		    <li><a href="{{ route('dashboard.restaurants.menus.index', $restaurant->id) }}">Menus</a></li>
 		   
 		</ul>
 	</div>

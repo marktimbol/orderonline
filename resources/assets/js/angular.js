@@ -40,3 +40,13 @@ app.controller('restaurantController', function($scope, $http) {
 			});
 	
 });
+
+app.controller('CreateMenuController', function($scope, $http) {
+
+	$scope.categories = [];
+
+	// $http.get('')
+	// 	.success(function(response) {
+	// 		$scope.categories = response.data;
+	// 	});
+});	

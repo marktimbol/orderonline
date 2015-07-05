@@ -27,4 +27,10 @@ class MenuRepository implements MenuRepositoryInterface {
 		$menu = $this->find($id);
 		$menu->delete();
 	}
+
+	public function updateLogo($id, $image) {
+		$menu = $this->find($id);
+		$menu->image = $image;
+		$menu->save();
+	}
 }

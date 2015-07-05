@@ -88,9 +88,11 @@ class CategoriesController extends Controller {
 		$restaurant = $restaurants;
 		$category = $categories;
 
-		if( $this->user->owns($restaurant) ) {
-			return view('dashboard.restaurants.categories.edit', compact('restaurant', 'category'));
-		}		
+		return view('dashboard.restaurants.categories.edit', compact('restaurant', 'category'));
+		
+		// if( $this->user->owns($restaurant) ) {
+		// 	return view('dashboard.restaurants.categories.edit', compact('restaurant', 'category'));
+		// }		
 	}
 
 	/**

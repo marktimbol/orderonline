@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Todo: menus/edit.blade.php
+ */
+
 Route::get('time-range', function() {
   $timings = hoursRange( 0, 86400, 60 * 15 );
   return Response::json(['data' => $timings]);

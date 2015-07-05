@@ -1,17 +1,14 @@
 <?php namespace App\Composers;
 
 use App\Repo\Cuisines\CuisineRepositoryInterface;
-use App\Repo\Countries\CountryRepositoryInterface;
 use Auth;
 
 class RestaurantComposer {
 
 	protected $cuisine;
-	protected $countries;
 
-	public function __construct( CuisineRepositoryInterface $cuisine, CountryRepositoryInterface $countries ) {
+	public function __construct( CuisineRepositoryInterface $cuisine) {
 		$this->cuisine = $cuisine;
-		$this->countries = $countries;
 	}
 
 	/**
@@ -34,17 +31,15 @@ class RestaurantComposer {
 
         /*=========================*/
 
-    	$countries = array();
-		$allCountries = $this->countries->all();
-		$countries[''] = '';
+  //   	$countries = array();
+		// $allCountries = $this->countries->all();
+		// $countries[''] = '';
 		
-		foreach( $allCountries as $country ) {
-			$countries[$country->countryCode] = $country->name;
-		}	
+		// foreach( $allCountries as $country ) {
+		// 	$countries[$country->countryCode] = $country->name;
+		// }	
 
 		$timeRange = hoursRange( 0, 86400, 60 * 15 );
-
-        $view->with('countries', $countries );
 
         $view->with('timeRange', $timeRange);
 

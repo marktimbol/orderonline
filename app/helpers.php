@@ -1,5 +1,13 @@
 <?php
 
+function getLogo($src) {
+
+    $src = $src == '' ? 'http://placehold.it/150x150' : '/images/uploads/' . $src;
+
+    return '<img src="'.$src.'" class="img-thumbnail" width="150" />';
+
+}
+
 function hoursRange( $lower = 0, $upper = 86400, $step = 3600, $format = '' ) {
   
     $times = array();
