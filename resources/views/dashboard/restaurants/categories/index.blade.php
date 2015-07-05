@@ -21,12 +21,21 @@
 				<tr>
 					<td>{{$category->name}}</td>
 					<td>
+						<!-- Single button -->
 						<div class="btn-group">
-							<a href="{{route('dashboard.restaurants.categories.edit', [$restaurant->id, $category->id])}}" class="btn btn-default btn-sm">Edit</a>
-
-							{!! Form::open(['method' => 'DELETE', 'route' => ['dashboard.restaurants.categories.destroy', $restaurant->id, $category->id]]) !!}
-								{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm']) !!}							
-							{!! Form::close() !!}
+							<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Action <span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="{{route('dashboard.restaurants.categories.edit', [$restaurant->id, $category->id])}}">Edit</a>
+								</li>
+								<li>
+									{!! Form::open(['method' => 'DELETE', 'route' => ['dashboard.restaurants.categories.destroy', $restaurant->id, $category->id]]) !!}
+										{!! Form::submit('Delete', ['class' => 'btn btn-danger btn-sm btn-block']) !!}				
+									{!! Form::close() !!}
+								</li>
+							</ul>
 						</div>
 					</td>
 				</tr>

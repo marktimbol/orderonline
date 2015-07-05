@@ -54,7 +54,12 @@ class CustomServiceProvider extends ServiceProvider {
 		$this->app->bind(
 			'App\Repo\Categories\CategoryRepositoryInterface',
 			'App\Repo\Categories\CategoryRepository'
-		);								
+		);			
+
+		$this->app->bind(
+			'App\Repo\Menus\MenuRepositoryInterface',
+			'App\Repo\Menus\MenuRepository'
+		);				
 	}
 
 }

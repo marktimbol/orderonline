@@ -1,13 +1,9 @@
 <?php
 
-Route::get('ip', function() {
-	return get_client_ip();
-});
 Route::get('time-range', function() {
   $timings = hoursRange( 0, 86400, 60 * 15 );
   return Response::json(['data' => $timings]);
 });
-
 
 Route::get('restaurant-timings/{id}', 'TimingsController@getTimings');
 
@@ -53,7 +49,6 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
 
 	/* ================== ROUTE BINDING ===================*/
 	
-
 	Route::get('/', ['as' => 'dashboard', 'uses' => 'PagesController@dashboard']);
 	Route::get('forbidden', ['as' => 'forbidden', 'uses' => 'PagesController@forbidden']);
 
