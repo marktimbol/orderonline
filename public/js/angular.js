@@ -50,4 +50,8 @@ app.controller('CreateMenuController', function($scope, $http) {
 	// 		$scope.categories = response.data;
 	// 	});
 });	
+
+app.controller('UpdateMenuController', function() {
+
+});
 //# sourceMappingURL=angular.js.map

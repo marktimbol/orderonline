@@ -32,6 +32,14 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
 	 */
 	protected $hidden = ['password', 'remember_token'];
 
+	public function hasAccessTo($restaurant) {
+
+		$userRestaurants = $this->restaurant()->lists('id');
+	
+		return in_array($restaurant->id, $userRestaurants) ? true : false;
+
+	}
+
 	public function setPasswordAttribute( $password ) {
 		$this->attributes['password'] = Hash::make( $password );
 	}

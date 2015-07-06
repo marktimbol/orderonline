@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class PagesController extends Controller {
 
+	public function __construct() {
+		
+	}
+
+	public function index() {
+		return 'index';
+	}
+
 	public function dashboard() {
 		return view('dashboard.index');
 	}

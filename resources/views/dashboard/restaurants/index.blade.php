@@ -6,7 +6,7 @@
 
 	<table class="table table-hover restaurants" border="0">
 		<tbody>
-			@foreach( $userRestaurants as $restaurant )
+			@foreach( $restaurants as $restaurant )
 			<tr>
 				<td width="130">
 					{!! getLogo($restaurant->logo) !!}

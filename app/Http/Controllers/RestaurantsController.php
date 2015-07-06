@@ -31,6 +31,8 @@ class RestaurantsController extends Controller {
 	public function __construct( RestaurantRepositoryInterface $restaurant, UserRepositoryInterface $user ) {
 		$this->restaurant = $restaurant;
 		$this->user = $user;
+
+		//$this->middleware('restaurant.owner', ['except' => 'index']);
 	}
 
 	/**
@@ -40,9 +42,9 @@ class RestaurantsController extends Controller {
 	 */
 	public function index()
 	{
-		$userRestaurants = Auth::user()->restaurant()->get();
+		$restaurants = Auth::user()->restaurant()->get();
 		
-		return view('dashboard.restaurants.index', compact('userRestaurants'));
+		return view('dashboard.restaurants.index', compact('restaurants'));
 	}
 
 	/**
@@ -97,7 +99,7 @@ class RestaurantsController extends Controller {
 	 */
 	public function show($restaurants)
 	{
-		dd($restaurants);
+		
 	}
 
 	/**

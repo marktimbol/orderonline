@@ -29,25 +29,12 @@
 				<div class="form-group">
 					{!! Form::label('telephone', null, ['class' => 'control-label']) !!}
 					{!! Form::text('telephone', null, ['class' => 'form-control', 'id' => 'mobile']) !!}
-				</div>		
+				</div>	
 
-				<div class="row">
-					<div class="col-md-6">
-						<div class="form-group">
-							{!! Form::label('minimumOrderAmount', 'Minimum Order Amount', ['class' => 'control-label']) !!}
-							{!! Form::text('minimumOrderAmount', null, ['class' => 'form-control']) !!}
-						</div>	
-					</div>
-
-					<div class="col-md-6">
-						<div ng-show="itHasDelivery">
-							<div class="form-group">
-								{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
-								{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
-							</div>		
-						</div>
-					</div>
-				</div>
+				<div class="form-group">
+					{!! Form::label('currency', null, ['class' => 'control-label']) !!}
+					<select name="currency" class="form-control bfh-currencies" data-currency="{{$restaurant->currency}}"></select>
+				</div>						
 
 
 				<div class="form-group">
@@ -69,10 +56,23 @@
 					{!! Form::text('paymentMethod', null, ['class' => 'form-control']) !!}
 				</div>
 
-				<div class="form-group">
-					{!! Form::label('currency', null, ['class' => 'control-label']) !!}
-					<select name="currency" class="form-control bfh-currencies" data-currency="{{$restaurant->currency}}"></select>
-				</div>				
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							{!! Form::label('minimumOrderAmount', 'Minimum Order Amount', ['class' => 'control-label']) !!}
+							{!! Form::text('minimumOrderAmount', null, ['class' => 'form-control']) !!}
+						</div>	
+					</div>
+
+					<div class="col-md-6">
+						<div ng-show="itHasDelivery">
+							<div class="form-group">
+								{!! Form::label('deliveryCharge', 'Delivery Charge', ['class' => 'control-label']) !!}
+								{!! Form::text('deliveryCharge', null, ['class' => 'form-control']) !!}
+							</div>		
+						</div>
+					</div>
+				</div>
 				
 			</div>
 		</div>
@@ -197,15 +197,12 @@
 
 		<h3 class="form-title">Logo</h3>
 		
-		@if($restaurant->logo)
-			<div>
-				<img src="/images/uploads/{{$restaurant->logo}}" width="200" />
-			</div>
-			<br />
-		@endif
-		
-		{!! Form::label('upload', 'Upload Logo', ['class' => 'control-label']) !!}
-		{!! Form::file('logo',['class' => 'form-control']) !!}
+		<div class="form-group">
+			{!! getLogo($restaurant->logo) !!}
+			<p>&nbsp;</p>
+			{!! Form::label('upload', 'Upload Logo', ['class' => 'control-label']) !!}
+			{!! Form::file('logo',['class' => 'form-control']) !!}
+		</div>
 
 		<hr />
 

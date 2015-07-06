@@ -16,6 +16,8 @@
 						<h3 class="clear-margin-top">{{$menu->name}}</h3>
 						<p>{{$menu->description}}</p>
 						<a href="{{ route('dashboard.restaurants.menus.edit', [$restaurant->id, $menu->id]) }}" class="btn btn-default"><i class="fa fa-pencil"></i></a>
+
+						<a href="#" class="btn btn-default"><i class="fa fa-trash"></i></a>
 					</td>
 				</tr>
 				@endforeach

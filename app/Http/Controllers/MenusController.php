@@ -11,6 +11,7 @@ use App\Repo\Menus\MenuRepositoryInterface;
 use Laracasts\Flash\Flash;
 use App\Commands\CreateMenuCommand;
 use App\Commands\UploadMenuPhotoCommand;
+use App\Commands\UpdateMenuCommand;
 
 class MenusController extends Controller {
 
@@ -20,6 +21,8 @@ class MenusController extends Controller {
 	public function __construct(RestaurantRepositoryInterface $restaurant, MenuRepositoryInterface $menu) {
 		$this->restaurant = $restaurant;
 		$this->menu = $menu;
+
+		$this->middleware('restaurant.owner');
 	}
 	/**
 	 * Display a listing of the resource.
@@ -103,9 +106,20 @@ class MenusController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($restaurants, CreateMenuRequest $request)
 	{
-		//
+
+		$this->dispatchFrom(UpdateMenuCommand::class, $request);
+
+		if( $request->hasFile('image') ) {
+			$this->dispatch(
+				new UploadMenuPhotoCommand($request->menu_id, $request->restaurant_id, $request->file('image'))
+			);		
+		}
+
+		Flash::success('Menu has been updated.');
+
+		return redirect()->route('dashboard.restaurants.menus.index', $restaurants->id);		
 	}
 
 	/**

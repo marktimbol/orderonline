@@ -3,6 +3,7 @@
 /**
  * Todo: menus/edit.blade.php
  */
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@index']);
 
 Route::get('time-range', function() {
   $timings = hoursRange( 0, 86400, 60 * 15 );
@@ -32,9 +33,7 @@ Route::get('auth/logout', ['as' => 'auth.logout', 'uses' => 'AuthController@getL
 /**
  * Unauthorized access
  */
-Route::get('unauthorized', function() {
-  return view('pages.unauthorized');
-});
+Route::get('forbidden', ['as' => 'forbidden', 'uses' => 'PagesController@forbidden']);
 
 View::composer( [
 			'pages.restaurants.create',
@@ -54,7 +53,7 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
 	/* ================== ROUTE BINDING ===================*/
 	
 	Route::get('/', ['as' => 'dashboard', 'uses' => 'PagesController@dashboard']);
-	Route::get('forbidden', ['as' => 'forbidden', 'uses' => 'PagesController@forbidden']);
+	
 
 	Route::resource('restaurants', 'RestaurantsController');
 
@@ -65,8 +64,6 @@ Route::group( ['prefix' => 'dashboard', 'middleware' => 'auth'], function() {
 
 	Route::resource('users', 'UsersController', ['only' => ['show','edit','update']]);
 	
-
 });
-
 
 
