@@ -51,7 +51,49 @@ app.controller('CreateMenuController', function($scope, $http) {
 	// 	});
 });	
 
-app.controller('UpdateMenuController', function() {
+app.controller('UpdateMenuController', function($scope) {
 
+	$scope.choices = [
+		{  
+			id: 0,
+			options:
+			[
+				{ id: 0 }        
+			]  
+		},	
+
+	];
+
+	console.log("Initial length: " + $scope.choices.length);
+
+	$scope.addChoice = function() {	
+
+		var newChoice = $scope.choices.length;
+
+		$scope.choices.push({id: newChoice, options: [{id: 0}]});
+
+		console.log("After addChoice(): " + $scope.choices.length);
+	}
+
+	$scope.removeChoice = function() {
+
+		var lastChoice = $scope.choices.length - 1;
+
+		$scope.choices.splice(lastChoice);
+
+		console.log("After removeChoice(): " + $scope.choices.length);
+	}
+
+	$scope.addOption = function(choiceId) {
+
+		var currentChoice = $scope.choices[choiceId].options;
+
+		var newOption = currentChoice.length + 1;
+
+		currentChoice.push({id: newOption });
+
+		console.log("After addOption(): " + $scope.choices.length);
+	}
+ 	
 });
 //# sourceMappingURL=angular.js.map

@@ -10,13 +10,14 @@ class UpdateMenuCommand extends Command {
 	public $name;
 	public $description;
 	public $price;
+	public $choice;
 
 	/**
 	 * Create a new command instance.
 	 *
 	 * @return void
 	 */
-	public function __construct($restaurant_id, $menu_id, $category, $name, $description, $price)
+	public function __construct($restaurant_id, $menu_id, $category, $name, $description, $price, $choice)
 	{
 		$this->restaurant_id = $restaurant_id;
 		$this->menu_id = $menu_id;
@@ -24,6 +25,7 @@ class UpdateMenuCommand extends Command {
 		$this->name = $name;
 		$this->description = $description;
 		$this->price = $price;
+		$this->choice = $choice;
 	}
 
 }

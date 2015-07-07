@@ -31,7 +31,8 @@ class UpdateMenuCommandHandler {
 			'category_id'	=> $command->category,
 			'name' 			=> $command->name,
 			'description'	=> $command->description,
-			'price'			=> $command->price
+			'price'			=> $command->price,
+			'choices'		=> json_encode($command->choice)
 		];
 		
 		$this->menu->update($command->menu_id, $data);

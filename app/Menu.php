@@ -11,7 +11,7 @@ class Menu extends Model {
 		'description',
 		'price',
 		'image',
-		'options'
+		'choices'
 	];
 
 	public function restaurant() {
